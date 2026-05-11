@@ -2,16 +2,13 @@ package com.example;
 
 import java.util.Scanner;
 
-import javax.print.DocFlavor.STRING;
-
 public class Util 
 {
 
-    public static String StringCheck(Scanner kb, String input)
+    public static String StringCheck(Scanner kb)
     {
         while(true)
         {
-            System.out.println(input);
             String output = kb.nextLine().trim();
             
             if(!output.trim().isEmpty())
@@ -20,16 +17,15 @@ public class Util
             }
             else
             { 
-                System.out.println("[ERROR] - String is empty and therefore invalid");
+                System.out.println("[ERROR] - Invalid string, it is empty and therefore invalid");
             }
         }
     }
 
-    public static int IntCheck(Scanner kb, int input)
+    public static int IntCheck(Scanner kb)
     {
         while(true)
         {
-            System.out.println(input);
             int output = kb.nextInt();
             
             if(kb.hasNextInt())
@@ -38,7 +34,29 @@ public class Util
             }
             else
             { 
-                System.out.println("[ERROR] - String is empty and therefore invalid");
+                System.out.println("[ERROR] - Invalid integer, kindly choose a number");
+            }
+        }
+    }
+
+
+    public static boolean BoolCheck(Scanner kb)
+    {
+        while(true)
+        {
+            String output = kb.nextLine();
+            
+            if(output == "true" || output == "y" || output == "yes")
+            {
+                return true;
+            }
+            else if (output == "no" || output == "false" || output == "n")
+            { 
+                return false;
+            }
+            else
+            {
+                System.out.println("[ERROR] - Invalid boolean, kindly put yes or no");
             }
         }
     }

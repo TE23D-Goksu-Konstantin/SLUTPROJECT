@@ -87,8 +87,14 @@ public class Main
                 kb.nextLine();
 
                 System.out.println("Title:");
-                String title = kb.nextLine(); 
-                Util.StringCheck(kb, title);
+                String title = Util.StringCheck(kb);
+
+                System.out.println("Genre:");
+                String genre = Util.StringCheck(kb);
+
+                System.out.println("Pages:");
+                int pages = Util.IntCheck(kb);
+
             }
             }
             catch (IllegalArgumentException e) 
