@@ -1,50 +1,100 @@
+//Konstantin TE23D
+
+
 package com.example;
 
 import com.google.gson.*;
-import com.google.gson.GsonBuilder;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Main 
 {
     public static void main(String[] args) throws MalformedURLException 
     {
-    
-    URL url = new URL("http://10.151.168.5:3114/");
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        
+        URL url = new URL("http://10.151.168.5:3114/");
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Scanner kb = new Scanner(System.in);
+        ArrayList<Book> books = new ArrayList<>();
+        ArrayList<Magazine> magazines = new ArrayList<>();
+        int input;
 
-    try {
-        List<Magazine> magazines = Arrays.asList(
-            gson.fromJson(new java.io.InputStreamReader(
-                    new java.net.URL("http://10.151.168.5:3114/magazines").openStream()
-                ),
-                Magazine[].class
-            )
-        );
 
-        List<Book> books = Arrays.asList(
-            gson.fromJson(new java.io.InputStreamReader(
+        while(true)
+        {
+            try
+            {        
+                magazines = new ArrayList<>(
+                    Arrays.asList(
+                    gson.fromJson(new java.io.InputStreamReader(
+                        new java.net.URL("http://10.151.168.5:3114/magazines").openStream()
+                    ),
+                    Magazine[].class
+                    )
+                )
+                );
+            
+                books = new ArrayList<>(
+                    Arrays.asList(
+                    gson.fromJson(new java.io.InputStreamReader(
                     new java.net.URL("http://10.151.168.5:3114/books").openStream()
                 ),
                 Book[].class
-            )
-        );
+                )
+                )
+            );
+            }
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
 
-        for (Book b : books) 
-        {
-            System.out.println(b);
-        }
-        for (Magazine m : magazines) 
-        {
-            System.out.println(m);
-        }
+            try 
+            {
+                
+                
+                System.out.println("Welcome to NTI Library! \n1. Print books\n2. Print magazines\n3. Add book\n4. Add magazine\n5. [EXIT]");
+                input = kb.nextInt();
+            
+                        
 
-    } catch (Exception e) {
-        e.printStackTrace();
+            if(input > 5 || input < 1)
+            {
+                System.out.println("[ERROR] - Kindly choose between 1-5");
+            }
+            else if(input == 1)
+            {
+                for (Book b : books) 
+                {
+                    System.out.println(b);
+                }
+            }
+            else if(input == 2)
+            {
+                for (Magazine m : magazines) 
+                {
+                    System.out.println(m);
+                }
+            }
+            else if(input == 3)
+            {
+                kb.nextLine();
+
+                System.out.println("Title:");
+                String title = kb.nextLine(); 
+                Util.StringCheck(kb, title);
+            }
+            }
+            catch (IllegalArgumentException e) 
+            {
+                System.out.println(e);
+            }
+        } 
     }
-}
 }
