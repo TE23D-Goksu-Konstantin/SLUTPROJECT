@@ -5,8 +5,10 @@ package com.example;
 
 import com.google.gson.*;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.Scanner;
 
 public class Main 
 {
-    public static void main(String[] args) throws MalformedURLException 
+    public static void main(String[] args) throws IOException 
     {
         
         URL url = new URL("http://10.151.168.5:3114/");
@@ -94,6 +96,16 @@ public class Main
 
                 System.out.println("Pages:");
                 int pages = Util.IntCheck(kb);
+
+                System.out.println("Available:");
+                boolean is_Available = Util.BoolCheck(kb);
+
+
+                Book newBook = new Book(genre, pages, 0, title, is_Available);
+                String json = gson.toJson(newBook);
+                
+                Files.writeString(Paths.get("proijeeect/src/Books.json"), json);
+                System.out.println("Book added!");
 
             }
             }

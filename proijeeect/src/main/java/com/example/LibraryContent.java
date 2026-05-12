@@ -3,11 +3,11 @@ package com.example;
 public abstract class LibraryContent 
 {
 
-    protected String id;
+    protected int id;
     protected String title;
     protected boolean isAvailable;
 
-    public LibraryContent(String id, String title, boolean isAvailable)
+    public LibraryContent(int id, String title, boolean isAvailable)
     {
         this.id = id;
         this.title = title;

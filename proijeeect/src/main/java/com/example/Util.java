@@ -25,16 +25,17 @@ public class Util
     public static int IntCheck(Scanner kb)
     {
         while(true)
-        {
-            int output = kb.nextInt();
-            
+        {          
             if(kb.hasNextInt())
-            {
+            {     
+                int output = kb.nextInt();
+                kb.nextLine();
                 return output;
             }
             else
             { 
                 System.out.println("[ERROR] - Invalid integer, kindly choose a number");
+                kb.nextLine();
             }
         }
     }
@@ -44,13 +45,13 @@ public class Util
     {
         while(true)
         {
-            String output = kb.nextLine();
+            String output = kb.nextLine().trim().toLowerCase();
             
-            if(output == "true" || output == "y" || output == "yes")
+            if(output.equals("true") || output.equals("y") || output.equals("yes"))
             {
                 return true;
             }
-            else if (output == "no" || output == "false" || output == "n")
+            else if (output.equals("no") || output.equals("false") || output.equals("n"))
             { 
                 return false;
             }

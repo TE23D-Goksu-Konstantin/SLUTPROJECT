@@ -6,7 +6,7 @@ public class Magazine extends LibraryContent
     private int issueNumber;
 
 
-    public Magazine( int issueNumber, String id, String title, boolean isAvailable)
+    public Magazine( int issueNumber, int id, String title, boolean isAvailable)
     {
         super(id, title, isAvailable);
         this.issueNumber = issueNumber;

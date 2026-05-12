@@ -6,7 +6,7 @@ public class Book extends LibraryContent
     private String genre;
     private int pages;
 
-    public Book(String genre, int pages, String id, String title, boolean isAvailable)
+    public Book(String genre, int pages, int id, String title, boolean isAvailable)
     {
         super(id, title, isAvailable);
         this.genre = genre;
