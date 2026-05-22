@@ -15,6 +15,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// The main system where the user can create, list and retrieve all available 
+// litterature. By utilizing a server, accessible from the URL listed below,
+// with the use of TypeToken the program can translate the information retireved
+// from the server and be used by the methods listed prior.
 public class Main
 {
     public static void main(String[] args) throws IOException
@@ -30,7 +34,7 @@ public class Main
 
         // These following paragraphs, until the While() loop begins, retrieves
         // the JSON-file inforamtion from the server shown in the URL, making
-        // it possible to print all existing books and magazines. 
+        // it possible to retrieve and print all existing litterature.
         try
         {
             books_response = Unirest.get("http://10.151.168.5:3114/books").asString();
@@ -66,7 +70,7 @@ public class Main
             {
 
                 System.out.println("Welcome to NTI Library! \n1. Get books\n2. Get magazines\n3. Print books\n4. Print magazines\n5. Add book\n6. Add magazine\n7. [EXIT]");
-                input = kb.nextInt();
+                input = kb.nextInt(); //Makes the user write what method they'd like to use
 
                 if(input > 7 || input < 1)
                 {
@@ -81,19 +85,19 @@ public class Main
                         return;
                     }
 
-                    String booksBody = books_response.getBody();
+                    String booksBody = books_response.getBody(); //Prepares translation to JSON
 
                     try
                     {
-                        Files.writeString(Paths.get("books.json"), booksBody);
+                        Files.writeString(Paths.get("books.json"), booksBody); //Overwrites and saves the current information in the local file "books.json"
                     }
                     catch (IOException e)
                     {
                         System.out.println("File error: " + e.getMessage());
                     }
 
-                    Type bookListType = new TypeToken<ArrayList<Book>>(){}.getType();
-                    books = gson.fromJson(booksBody, bookListType);
+                    Type bookListType = new TypeToken<ArrayList<Book>>(){}.getType(); //Defines the structure for the JSON to ArrayList convertion
+                    books = gson.fromJson(booksBody, bookListType); //Converts using GSON into book objects
 
 
                 }
@@ -105,31 +109,31 @@ public class Main
                         return;
                     }
 
-                    String magazinesBody = magazines_response.getBody();
+                    String magazinesBody = magazines_response.getBody(); //Prepares translation to JSON
 
                     try
                     {
-                        Files.writeString(Paths.get("magazines.json"), magazinesBody);
+                        Files.writeString(Paths.get("magazines.json"), magazinesBody); //Overwrites and saves the current information in the local file "magazines.json"
                     }
                     catch (IOException e)
                     {
                         System.out.println("File error: " + e.getMessage());
                     }
 
-                    Type magazineListType = new TypeToken<ArrayList<Magazine>>(){}.getType();
-                    magazines = gson.fromJson(magazinesBody, magazineListType);
+                    Type magazineListType = new TypeToken<ArrayList<Magazine>>(){}.getType(); //Defines the structure for the JSON to ArrayList convertion
+                    magazines = gson.fromJson(magazinesBody, magazineListType); //Converts using GSON into book objects
 
                 }
                 else if(input == 3)
                 {
-                    for (Book b : books)
+                    for (Book b : books) //Print all existing books
                     {
                         System.out.println(b);
                     }
                 }
                 else if(input == 4)
                 {
-                    for (Magazine m : magazines)
+                    for (Magazine m : magazines) //Print all existing magazines
                     {
                         System.out.println(m);
                     }
@@ -150,18 +154,18 @@ public class Main
                     System.out.println("Available:");
                     boolean is_Available = Util.BoolCheck(kb);
 
-                    Book newBook = new Book(genre, pages, "", title, is_Available);
+                    Book newBook = new Book(genre, pages, "", title, is_Available); //Creates a new book object
 
-                    String jsonBody = gson.toJson(newBook);
+                    String jsonBody = gson.toJson(newBook); //Converts the new book into JSON using GSON
 
                     HttpResponse<String> postResponse;
 
                     try
                     {
-                        postResponse = Unirest.post("http://10.151.168.5:3114/books")
-                            .header("Content-Type", "application/json")
-                            .body(jsonBody)
-                            .asString();
+                        postResponse = Unirest.post("http://10.151.168.5:3114/books") //Creates a POST request
+                            .header("Content-Type", "application/json") //Applies JSON format
+                            .body(jsonBody) //Sends the new JSON string
+                            .asString(); //Stores the server response as string
                     }
                     catch (UnirestException e)
                     {
@@ -171,19 +175,19 @@ public class Main
 
                     status = postResponse.getStatus();
 
-                    if(status != 200 && status != 201)
+                    if(status != 200 && status != 201) //If server response is faulty, send error message
                     {
                         System.out.println("Server error: " + status);
                         return;
                     }
-
+                    //IF statusreport went well, then...
                     String postBody = postResponse.getBody();
 
-                    Book responseBook = gson.fromJson(postBody, Book.class);
+                    Book responseBook = gson.fromJson(postBody, Book.class); //Converts response from server into book object using GSON
 
-                    books.add(responseBook);
+                    books.add(responseBook); //Adds the new book object
 
-                    System.out.println("Saved on server: " + responseBook);
+                    System.out.println("Saved on server: " + responseBook); //Confirms the successful addition
                 }
                 else if(input == 6)
                 {
@@ -238,9 +242,9 @@ public class Main
                 }
                 else if(input == 7)
                 {
-                    kb.close();
+                    kb.close(); 
                     Unirest.shutDown();
-                    System.exit(0);
+                    System.exit(0); //Closes the program after shutting down the keyboard (kb) and Unirest
                 }
             }
             catch (IllegalArgumentException e)
