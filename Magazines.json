@@ -1,0 +1,95 @@
+[
+  {
+    "id": "1",
+    "title": "Tech World",
+    "issueNumber": 12,
+    "category": "Technology",
+    "publishedYear": 2025,
+    "isAvailable": true
+  },
+  {
+    "id": "2",
+    "title": "Tech World",
+    "issueNumber": 11,
+    "category": "Technology",
+    "publishedYear": 2025,
+    "isAvailable": true
+  },
+  {
+    "id": "3",
+    "title": "Science Today",
+    "issueNumber": 45,
+    "category": "Science",
+    "publishedYear": 2024,
+    "isAvailable": true
+  },
+  {
+    "id": "4",
+    "title": "Modern Finance",
+    "issueNumber": 8,
+    "category": "Economy",
+    "publishedYear": 2025,
+    "isAvailable": true
+  },
+  {
+    "id": "5",
+    "title": "Healthy Living",
+    "issueNumber": 102,
+    "category": "Health",
+    "publishedYear": 2023,
+    "isAvailable": true
+  },
+  {
+    "id": "6",
+    "title": "Nature Explorer",
+    "issueNumber": 34,
+    "category": "Environment",
+    "publishedYear": 2024,
+    "isAvailable": false
+  },
+  {
+    "id": "7",
+    "title": "Gamer's Edge",
+    "issueNumber": 210,
+    "category": "Gaming",
+    "publishedYear": 2025,
+    "isAvailable": true
+  },
+  {
+    "id": "8",
+    "title": "Auto Enthusiast",
+    "issueNumber": 56,
+    "category": "Automotive",
+    "publishedYear": 2024,
+    "isAvailable": true
+  },
+  {
+    "id": "9",
+    "title": "Global Politics",
+    "issueNumber": 15,
+    "category": "Politics",
+    "publishedYear": 2025,
+    "isAvailable": true
+  },
+  {
+    "id": "10",
+    "title": "Creative Design",
+    "issueNumber": 77,
+    "category": "Art",
+    "publishedYear": 2024,
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 50,
+    "id": "ZJ1CzaiHBKw",
+    "title": "Vogue",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 10,
+    "publishedYear": 2004,
+    "id": "ubdclojncU8",
+    "title": "Clothes",
+    "isAvailable": false
+  }
+]

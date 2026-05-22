@@ -1,0 +1,68 @@
+[
+  {
+    "issueNumber": 12,
+    "id": 1,
+    "title": "Tech World",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 11,
+    "id": 2,
+    "title": "Tech World",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 45,
+    "id": 3,
+    "title": "Science Today",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 8,
+    "id": 4,
+    "title": "Modern Finance",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 102,
+    "id": 5,
+    "title": "Healthy Living",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 34,
+    "id": 6,
+    "title": "Nature Explorer",
+    "isAvailable": false
+  },
+  {
+    "issueNumber": 210,
+    "id": 7,
+    "title": "Gamer\u0027s Edge",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 56,
+    "id": 8,
+    "title": "Auto Enthusiast",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 15,
+    "id": 9,
+    "title": "Global Politics",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 77,
+    "id": 10,
+    "title": "Creative Design",
+    "isAvailable": true
+  },
+  {
+    "issueNumber": 1,
+    "id": 0,
+    "title": "e",
+    "isAvailable": false
+  }
+]
