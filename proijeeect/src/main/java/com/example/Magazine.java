@@ -1,5 +1,6 @@
 package com.example;
 
+//Child-class to LibraryContent
 public class Magazine extends LibraryContent
 {
 

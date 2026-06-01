@@ -103,7 +103,7 @@ public class Main
                 }
                 else if(input == 2)
                 {
-                    if(status != 200)
+                    if(status != 200) //If the statusreport is anything but okay, send a error message
                     {
                         System.out.println("Server error: " + status);
                         return;
@@ -205,18 +205,18 @@ public class Main
                     System.out.println("Available:");
                     boolean is_Available = Util.BoolCheck(kb);
 
-                    Magazine newMagazine = new Magazine(iss_Number, publishedYear, "", title, is_Available);
+                    Magazine newMagazine = new Magazine(iss_Number, publishedYear, "", title, is_Available); //Creates a new magazine object
 
-                    String jsonBody = gson.toJson(newMagazine);
+                    String jsonBody = gson.toJson(newMagazine); //Converts the new magazine into JSON using GSON
 
                     HttpResponse<String> postResponse;
 
                     try
                     {
-                        postResponse = Unirest.post("http://10.151.168.5:3114/magazines")
-                            .header("Content-Type", "application/json")
-                            .body(jsonBody)
-                            .asString();
+                        postResponse = Unirest.post("http://10.151.168.5:3114/magazines") //Creates a POST request
+                            .header("Content-Type", "application/json") //Applies JSON format
+                            .body(jsonBody) //Sends the new JSON string
+                            .asString(); //Stores the server response as string
                     }
                     catch (UnirestException e)
                     {
@@ -226,7 +226,7 @@ public class Main
 
                     status = postResponse.getStatus();
 
-                    if(status != 200 && status != 201)
+                    if(status != 200 && status != 201) //If server response is faulty, send error message
                     {
                         System.out.println("Server error: " + status);
                         return;
@@ -238,7 +238,7 @@ public class Main
 
                     magazines.add(responseMagazine);
 
-                    System.out.println("Saved on server: " + responseMagazine);
+                    System.out.println("Saved on server: " + responseMagazine); //Confirms the successful addition
                 }
                 else if(input == 7)
                 {
